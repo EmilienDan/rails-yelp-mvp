@@ -1,8 +1,8 @@
 class RestaurantsController < ApplicationController
-  before_action :restaurant_set, only: [:show, :edit, :update, :destroy]
+  before_action :restaurant_set, only: [:show]
 
   def index
-    @restaurant = Restaurant.all
+    @restaurants = Restaurant.all
   end
 
   def show
@@ -12,17 +12,8 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new
   end
 
-  def edit
-  end
-
-  def update
-    @restaurant.update(restaurant_params)
-    redirect_to restaurant_path(@restaurant)
-  end
-
-  def destroy
-    @restaurant.destroy
-    redirect_to restaurants_path, status: :see_other
+  def review
+    @review = @restaurant.review
   end
 
   def create
